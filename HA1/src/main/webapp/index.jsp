@@ -12,6 +12,10 @@
 <body>
 <jsp:include page = "header.jsp" />
 
+<p>
+HELLO WORLD....
+</p>
+<span>COmmit???</span>
 
 
 <jsp:include page = "footer.jsp" />
