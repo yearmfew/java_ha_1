@@ -13,8 +13,9 @@
 </span>
 </div>
 <div class="buttons">
-<a href="login.jsp" class="btn btn-primary btn-lg">Login</a>
-<a href="registrierung.jsp" class="btn btn-success btn-lg">Registrierung</a>
+<a href="login.jsp" class="indexPageButton">Login</a>
+<a href="registrierung.jsp" class="indexPageButton">Registrierung</a>
+
 
 </div>
 
