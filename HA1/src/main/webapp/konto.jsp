@@ -8,7 +8,7 @@
 </head>
 <body>
 <jsp:include page = "header.jsp" />
-test
+Konto Seite
 
 <jsp:include page = "footer.jsp" />
 </body>

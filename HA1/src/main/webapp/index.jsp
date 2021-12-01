@@ -6,7 +6,6 @@
 <jsp:include page = "header.jsp" />
 
 
-<div class="page-container">
 <div>
 <span>
     Bitte loggen Sie ein. Wenn Sie keine Akkount haben, können Sie ein neues Erstellen.
@@ -19,7 +18,6 @@
 
 </div>
 
-</div>
 
 <jsp:include page = "footer.jsp" />
 
