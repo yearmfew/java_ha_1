@@ -4,7 +4,7 @@
 </div>
 
 <footer>
-    @2021 Wise Semester - Birol | Aras | Luca
+    @2021 Wise Semester - Birol | Anas | Luca
 
 </footer>
 
