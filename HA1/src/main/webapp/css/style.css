@@ -1,4 +1,4 @@
-
+/* Login Page Style */
 .login-form-container{
 	display:flex;
 	width:100%;
@@ -36,17 +36,6 @@
 .indexPageButton:hover{
 	color:white;
 	background-color:#204a87;
-}
-
-
-footer{
-    position: fixed;
-    bottom: 0pt;
-    width:100%;
-	background-color:#F8F9FA;
-	padding:1rem;
-	display:flex;
-	justify-content:center;
 }
 
 /*
