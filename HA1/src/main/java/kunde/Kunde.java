@@ -1,5 +1,7 @@
 package kunde;
 
+import java.util.ArrayList;
+
 public class Kunde {
 
 	private String vorname;
@@ -10,6 +12,7 @@ public class Kunde {
 	private String bankinstitut;
 	private boolean geschaeftsbedingungenAkzeptiert;
 	private boolean newsletterAbonniert;
+	private ArrayList<Konto> Konten;
 
 	public Kunde(String vorname, String nachname, int alter, String email, String password, String bankinstitut,
 			boolean geschaeftsbedingungenAkzeptiert, boolean newsletterAbonniert) {
@@ -21,6 +24,9 @@ public class Kunde {
 		this.bankinstitut = bankinstitut;
 		this.geschaeftsbedingungenAkzeptiert = geschaeftsbedingungenAkzeptiert;
 		this.newsletterAbonniert = newsletterAbonniert;
+	}
+
+	public Kunde() {
 	}
 
 	public String getVorname() {

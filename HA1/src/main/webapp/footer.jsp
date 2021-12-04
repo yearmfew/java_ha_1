@@ -5,7 +5,6 @@
 
 <footer>
     @2021 Wise Semester - Birol | Anas | Luca
-
 </footer>
 
 
