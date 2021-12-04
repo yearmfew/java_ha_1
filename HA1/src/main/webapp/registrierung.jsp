@@ -3,43 +3,37 @@
 
 <jsp:include page = "header.jsp" />
 
-<!-- TODO: einen Form erstellen wir die üebungsblatt. 
-Bootstrap können verwendet für diese Seite. 
-
-https://getbootstrap.com/docs/5.1/forms/overview/
-
-Senden Sie dateien zu servlet.  -->
 <form action="FormRegistrierung" method="POST">
   <div class="form-inputs"> 
     <div>
       <label for="vorname" class="form-label">Vorname</label>
-      <input type="text" class="form-control" name="vorname" id="vorname">
+      <input type="text" required class="form-control" name="vorname" id="vorname">
     </div>
     <div>
       <label for="nachname" class="form-label">Nachname</label>
-      <input type="text" class="form-control" name="nachname" id="nachname">
+      <input type="text" required class="form-control" name="nachname" id="nachname">
     </div>
       <div>
       <label for="alter" class="form-label">Alter</label>
-      <input type="number" class="form-control" name="alter" id="alter">
+      <input type="number" required class="form-control" name="alter" id="alter">
     </div>
     <div>
       <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" name="email" id="email">
+      <input type="email" required class="form-control" name="email" id="email">
             <span class="warning">
       ${ emailAlreadyUsed }
       </span>
     </div>
     <div>
-      <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" name="password" id="password">
+      <label for="password"  class="form-label">Password</label>
+      <input type="password" required class="form-control" name="password" id="password">
       <span class="warning">
       ${ passwordsAreNotEqual }
       </span>
       </div>
     <div>
       <label for="password2" class="form-label">Wiederholen Sie Password</label>
-      <input type="password" class="form-control" name="password2" id="password2">
+      <input type="password" required class="form-control" name="password2" id="password2">
         <span class="warning">
       ${ passwordsAreNotEqual } 
       </span>
@@ -47,7 +41,7 @@ Senden Sie dateien zu servlet.  -->
     </div>
     <div>
       <label for="bankinstitut" class="form-label">Bankinstitut</label>
-      <input type="text" class="form-control" name="bankinstitut" id="bankinstitut">
+      <input type="text" required class="form-control" name="bankinstitut" id="bankinstitut">
     </div>
     
     <div class="form-check">
