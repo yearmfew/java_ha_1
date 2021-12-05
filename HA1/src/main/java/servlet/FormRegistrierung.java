@@ -12,9 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import kunde.Kunde;
 
-/**
- * Servlet implementation class FormRegistrierung
- */
 @WebServlet("/FormRegistrierung")
 public class FormRegistrierung extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -47,8 +44,7 @@ public class FormRegistrierung extends HttpServlet {
 			for (Kunde k : sessionKunden) {
 				String mail = k.getEmail();
 				if (mail.equals(email)) {
-					System.out.println("already used");
-					request.setAttribute("emailAlreadyUsed", "Es gibt einen Akkount mit diesem Email.");
+					request.setAttribute("emailAlreadyUsed", "Es gibt einen Account mit diesem Email.");
 					isEmailAlreadyUsed = true;
 				}
 			}

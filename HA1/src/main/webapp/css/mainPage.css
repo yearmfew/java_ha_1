@@ -1,0 +1,61 @@
+.menu{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height:3rem;
+	background-color:#F8F9FA;
+	width:100%;
+	padding:0;
+}
+
+.menu div{
+	margin:0;
+	padding:0 0 0 20px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width:50%;
+	height:100%;
+	
+}
+.menu div a{
+	text-decoration: none;
+	margin:0 1.5rem 0 0;
+	color:black;
+	min-width:5rem;
+	height:100%;
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	padding:0 1rem;
+}
+.menu div a:hover{
+	background-color: #e1e6ea;
+	color: #35404b;
+}
+
+.menu button{
+	height:80%;
+	width:8%;
+	border:none;
+	background-color:#b4bfca;
+	color:white;
+	border-radius: 10px;
+	margin-right:10px;
+}
+.menu button:hover{
+	background-color:#97a6b5;
+}
+
+
+
+
+footer{
+    position: fixed;
+    bottom: 0pt;
+    width:100%;
+	background-color:#F8F9FA;
+	padding:1rem;
+	display:flex;
+	justify-content:center;
+}

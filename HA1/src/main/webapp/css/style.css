@@ -1,4 +1,4 @@
-
+/* Login Page Style */
 .login-form-container{
 	display:flex;
 	width:100%;
@@ -38,17 +38,6 @@
 	background-color:#204a87;
 }
 
-
-footer{
-    position: fixed;
-    bottom: 0pt;
-    width:100%;
-	background-color:#F8F9FA;
-	padding:1rem;
-	display:flex;
-	justify-content:center;
-}
-
 /*
 Registrierung Page Style
 */
@@ -72,7 +61,13 @@ Registrierung Page Style
 }
 
 
-
+.formFile{
+	width: 250px;
+	display:flex;
+	padding:0;
+	margin-top:20px;
+	flex-direction: column;
+}
 
 
 

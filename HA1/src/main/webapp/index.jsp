@@ -8,7 +8,7 @@
 
 <div>
 <span>
-    Bitte loggen Sie ein. Wenn Sie keine Akkount haben, können Sie ein neues Erstellen.
+    Bitte loggen Sie ein. Wenn Sie keinen Account haben, können Sie einen neuen erstellen.
 </span>
 </div>
 <div class="buttons">
