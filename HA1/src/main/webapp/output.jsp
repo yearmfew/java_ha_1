@@ -10,7 +10,7 @@
 <jsp:include page = "header.jsp" />
 Hallo ${ loginname }!
 
-<p>Zurück zu main page: </p>
+<p>Zurück zur Startseite: </p>
 <button></button>
 
 </body>

@@ -15,13 +15,11 @@
 
 <nav class="menu"> 
     <div>
-        <a aria-current="page" href="index.jsp">Main Page</a>
-        <a aria-current="page" href="konto.jsp">Konto</a>
-        <a href="registrierung.jsp">Registrierung</a>
+        <a aria-current="page" href="index.jsp">Startseite</a>
+      <%--  <a aria-current="page" href="konto.jsp">Konto</a>
+        <a href="registrierung.jsp">Registrierung</a> --%>
     </div>
-    <button type="submit">Logout</button>
 </nav>
 
 
-<div class="page-container">
-
+<div class="page-container" >

@@ -6,7 +6,7 @@
 
 <form action="FormLogin" method="POST">
   <div class="mb-3">
-    <label for="email"  class="form-label">Nutzername</label>
+    <label for="email"  class="form-label">Email</label>
     <input type="email" required class="form-control" name="email" id="email">
   </div>
   <div class="mb-3">
@@ -14,6 +14,11 @@
     <input type="password" required class="form-control" name="password" id="password">
   </div>
   <button type="submit" class="btn btn-primary">Login</button>
+   <span class="warning">
+       ${ fehlermeldung }
+      </span>
+ 
+  
 </form>
 
 <jsp:include page = "footer.jsp" />

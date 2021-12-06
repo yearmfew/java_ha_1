@@ -29,18 +29,26 @@ public class FormKonto extends HttpServlet {
 		// this for loop going to be deleted
 		// email will be deleted from form and here
 		String email = request.getParameter("email");
+		String logout = request.getParameter("Logout");
 		ArrayList<Kunde> sessionKunden = (ArrayList<Kunde>) session.getAttribute("kunden");
 		for (Kunde k : sessionKunden) {
 			String mail = k.getEmail();
 			if (mail.equals(email)) {
 				myKunde = k;
 			}
+			 
 		}
-
+		
 		Konto konto = new Konto(kontoName, myKunde);
 		System.out.println(konto.getId());
 		System.out.println(myKunde.getVorname());
 		request.getRequestDispatcher("konto.jsp").forward(request, response);
+		if (logout != null) {
+			request.setAttribute("verabschiedung", "Bis Wieder "); // + k.getVorname() + " "+ k.getNachname());
+			request.getRequestDispatcher("logout.jsp").forward(request, response);
+			session.invalidate();
+		}
 	}
+	
 
 }

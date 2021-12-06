@@ -31,11 +31,11 @@ public class FormRegistrierung extends HttpServlet {
 		boolean newsletter = (request.getParameter("newsletter") != null);
 
 		if (!(password.equals(password2))) {
-			request.setAttribute("passwordsAreNotEqual", "Password sind nicht gleicht");
+			request.setAttribute("passwordsAreNotEqual", "Die Passwörter sind nicht gleich!");
 		}
 		if (!geschaeftsbedingungen) {
-			request.setAttribute("bedingungenNotAccepted", "Müssen Sie geschaeftsbedingungen akzeptieren");
-		}
+			request.setAttribute("bedingungenNotAccepted", "Bitte akezeptieren Sie die Geschäftsbedingungen");
+		} 
 
 		HttpSession session = request.getSession();
 		ArrayList<Kunde> sessionKunden = (ArrayList<Kunde>) session.getAttribute("kunden");
@@ -44,12 +44,12 @@ public class FormRegistrierung extends HttpServlet {
 			for (Kunde k : sessionKunden) {
 				String mail = k.getEmail();
 				if (mail.equals(email)) {
-					request.setAttribute("emailAlreadyUsed", "Es gibt einen Account mit diesem Email.");
+					request.setAttribute("emailAlreadyUsed", "Es gibt bereits einen Account mit dieser Email!");
 					isEmailAlreadyUsed = true;
 				}
 			}
 		}
-
+// bereits ausgefüllte richtige Felder werden gelöscht. Fehler
 		if ((password.equals(password2)) && (geschaeftsbedingungen) && (!isEmailAlreadyUsed)) {
 			request.setAttribute("passwordsAreNotEqual", "");
 			request.setAttribute("bedingungenNotAccepted", "");
