@@ -2,18 +2,17 @@
     pageEncoding="UTF-8"%>
 
 
-
-<jsp:include page = "header.jsp" />
+<%-- Kein Bootstrap in erste page, startseite button unnötig in starseite --%>
+ <jsp:include page = "header.jsp" />
 
 
 <div>
-<span>
-    Bitte loggen Sie ein. Wenn Sie keinen Account haben, können Sie einen neuen erstellen.
-</span>
-</div>
-<div class="buttons">
-<a href="login.jsp" class="indexPageButton">Login</a>
-<a href="registrierung.jsp" class="indexPageButton">Registrierung</a>
+	<h1 style="font-size:28px">BAL Bank. Willkommen zurück.</h1>
+	<span>
+	
+    Bitte <a href="login.jsp" >loggen Sie sich</a> ein. Wenn Sie noch keinen Account haben,
+    können Sie <a href="registrierung.jsp" >einen neuen erstellen</a>.
+	</span>
 
 
 </div>

@@ -25,14 +25,14 @@
       </span>
     </div>
     <div>
-      <label for="password"  class="form-label">Password</label>
+      <label for="password"  class="form-label">Passwort</label>
       <input type="password" required class="form-control" name="password" id="password">
       <span class="warning">
       ${ passwordsAreNotEqual }
       </span>
       </div>
     <div>
-      <label for="password2" class="form-label">Wiederholen Sie Password</label>
+      <label for="password2" class="form-label">Wiederholen Sie ihr Passwort</label>
       <input type="password" required class="form-control" name="password2" id="password2">
         <span class="warning">
       ${ passwordsAreNotEqual } 
@@ -47,7 +47,7 @@
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="geschaeftsbedingungen" name="geschaeftsbedingungen"  id="geschaeftsbedingungen">
       <label class="form-check-label" for="geschaeftsbedingungen">
-        Geschäftsbedingungen zu akzeptieren
+        Ich akzeptiere die Geschäftsbedingungen
       </label>
             <span class="warning">
       ${ bedingungenNotAccepted } 
@@ -58,7 +58,7 @@
     <div class="form-check">
       <input class="form-check-input" type="checkbox" name="newsletter" value="newsletter"  id="newsletter">
       <label class="form-check-label" for="newsletter">
-        Newsletter zu akzeptieren
+        Zum Newsletter anmelden
       </label>
     </div>
   </div>

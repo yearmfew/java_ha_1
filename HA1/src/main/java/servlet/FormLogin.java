@@ -12,9 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import kunde.Kunde;
 
-/**
- * Servlet implementation class FormLogin
- */
 @WebServlet("/FormLogin")
 public class FormLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,15 +30,21 @@ public class FormLogin extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
+		// prüfe ob es kunden in der liste gibt
 		ArrayList<Kunde> sessionKunden = (ArrayList<Kunde>) session.getAttribute("kunden");
-		for (Kunde k : sessionKunden) {
-			if (k.getEmail().equals(email)) {
-				request.setAttribute("vorname", k.getVorname());
+		for (Kunde customer : sessionKunden) {
+			if (customer.getEmail().equals(email)) {
+				request.setAttribute("vorname", customer.getVorname());
 				// password check
-				if (k.getPassword().equals(password)) {
+				if (customer.getPassword().equals(password)) {
+					request.setAttribute("nutzername", "Hey " + customer.getVorname() + " " + customer.getNachname());
 					request.getRequestDispatcher("konto.jsp").forward(request, response);
+					
+					
 				} else {
+					request.setAttribute("fehlermeldung", "Nutzername oder Passwort falsch. Bitte überprüfen sie ihre Daten.");
 					request.getRequestDispatcher("login.jsp").forward(request, response);
+					
 				}
 			}
 		}
