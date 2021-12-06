@@ -13,13 +13,4 @@
 </head>
 <body>
 
-<nav class="menu"> 
-    <div>
-        <a aria-current="page" href="index.jsp">Startseite</a>
-      <%--  <a aria-current="page" href="konto.jsp">Konto</a>
-        <a href="registrierung.jsp">Registrierung</a> --%>
-    </div>
-</nav>
-
-
 <div class="page-container" >

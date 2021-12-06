@@ -16,17 +16,12 @@ import kunde.Kunde;
 public class FormLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// we take the parameter we send with this syntax:
 		// In inputs we have names. We take the parameters with this names.
 		// look login.jsp form to understand
 
-		// where should it be username and password
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
@@ -35,16 +30,18 @@ public class FormLogin extends HttpServlet {
 		for (Kunde customer : sessionKunden) {
 			if (customer.getEmail().equals(email)) {
 				request.setAttribute("vorname", customer.getVorname());
+				request.setAttribute("kunde", customer);
 				// password check
 				if (customer.getPassword().equals(password)) {
+					session.setAttribute("kunde", customer);
 					request.setAttribute("nutzername", "Hey " + customer.getVorname() + " " + customer.getNachname());
 					request.getRequestDispatcher("konto.jsp").forward(request, response);
-					
-					
+
 				} else {
-					request.setAttribute("fehlermeldung", "Nutzername oder Passwort falsch. Bitte überprüfen sie ihre Daten.");
+					request.setAttribute("fehlermeldung",
+							"Nutzername oder Passwort falsch. Bitte überprüfen sie ihre Daten.");
 					request.getRequestDispatcher("login.jsp").forward(request, response);
-					
+
 				}
 			}
 		}

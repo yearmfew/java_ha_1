@@ -2,15 +2,11 @@
     pageEncoding="UTF-8"%>
     
     
+ <jsp:include page = "header.jsp" />
 
-<form action="FormKonto">
-	
+<h1 style="font-size:28px">BAL Bank. Auf Wiedersehen ${vorname} ${nachname}</h1>
+<jsp:include page = "welcome.jsp" />
 
-		<span>
-    	${ verabschiedung }
-    	</span>
-    	
-</form>
-<%-- session.invalidate(); kein java code in jsp schreiben? --%>
-<p> Sie haben sich erfolgreich abgemeldet.</p>
-verlinkung auf index jsp -> index.jsp inkludieren --%>
+
+<jsp:include page = "footer.jsp" />
+

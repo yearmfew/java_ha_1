@@ -93,4 +93,15 @@ public class Kunde {
 		this.newsletterAbonniert = newsletterAbonniert;
 	}
 
+	public ArrayList<Konto> getKonten() {
+		return Konten;
+	}
+
+	public void setKonten(ArrayList<Konto> konten) {
+		Konten = konten;
+	}
+
+//	public void setKonten(Konto konto) {
+//		this.Konten.add(konto);
+//	}
 }

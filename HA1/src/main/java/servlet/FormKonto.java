@@ -21,34 +21,14 @@ public class FormKonto extends HttpServlet {
 			throws ServletException, IOException {
 
 		String kontoName = request.getParameter("kontoName");
-		Kunde myKunde = new Kunde();
 		HttpSession session = request.getSession();
-		// We need a kunde to create a konto. We are going to take the eingeloggte kunde
-		// directly.
-		// For now I am finding it by using email.
-		// this for loop going to be deleted
-		// email will be deleted from form and here
-		String email = request.getParameter("email");
-		String logout = request.getParameter("Logout");
-		ArrayList<Kunde> sessionKunden = (ArrayList<Kunde>) session.getAttribute("kunden");
-		for (Kunde k : sessionKunden) {
-			String mail = k.getEmail();
-			if (mail.equals(email)) {
-				myKunde = k;
-			}
-			 
-		}
-		
-		Konto konto = new Konto(kontoName, myKunde);
-		System.out.println(konto.getId());
-		System.out.println(myKunde.getVorname());
+		Kunde kunde = (Kunde) session.getAttribute("kunde");
+		Konto konto = new Konto(kontoName, kunde);
+		ArrayList<Konto> Konten = new ArrayList<Konto>();
+		Konten.add(konto);
+		kunde.setKonten(Konten);
+		request.setAttribute("nutzername", "Hey " + kunde.getVorname() + " " + kunde.getNachname());
 		request.getRequestDispatcher("konto.jsp").forward(request, response);
-		if (logout != null) {
-			request.setAttribute("verabschiedung", "Bis Wieder "); // + k.getVorname() + " "+ k.getNachname());
-			request.getRequestDispatcher("logout.jsp").forward(request, response);
-			session.invalidate();
-		}
 	}
-	
 
 }
