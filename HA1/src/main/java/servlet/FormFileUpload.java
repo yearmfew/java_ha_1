@@ -21,11 +21,13 @@ public class FormFileUpload extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		final String path = "/uplaods";
+		String currentDir = System.getProperty("user.dir");
+		System.out.println(currentDir);
+		final String path = currentDir + "/uploads";
 		final Part filePart = request.getPart("file");
-		final String fileName = filePart.getName();
-
+		final String fileName = filePart.getName() + ".xlsx";
+		String name = request.getParameter("file");
+		System.out.println(name);
 		OutputStream out = null;
 		InputStream filecontent = null;
 
