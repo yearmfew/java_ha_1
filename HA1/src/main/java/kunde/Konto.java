@@ -1,7 +1,7 @@
 package kunde;
 
 import java.util.UUID;
-
+// Beinhaltet getter und setter für FormKonto
 public class Konto {
 	private String kontoName;
 	private String id;
@@ -10,33 +10,14 @@ public class Konto {
 	public Konto(String kontoName, Kunde kunde) {
 		this.kontoName = kontoName;
 		Kunde = kunde;
+		// KontoID von einem Kunden wird mithilfe der email erstellt
 		String email = kunde.getEmail();
 		String[] splittedMail = email.split("@");
-		id = splittedMail[0] + UUID.randomUUID().toString();
-	}
-
-	public String getKontoName() {
-		return kontoName;
+		this.id = splittedMail[0] + UUID.randomUUID().toString();
 	}
 
 	public void setKontoName(String kontoName) {
 		this.kontoName = kontoName;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public Kunde getKunde() {
-		return Kunde;
-	}
-
-	public void setKunde(Kunde kunde) {
-		Kunde = kunde;
 	}
 
 }

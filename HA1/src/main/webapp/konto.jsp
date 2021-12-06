@@ -3,7 +3,7 @@
     
 
 
-<jsp:include page = "header.jsp" />
+<jsp:include page = "shared/header.jsp" />
 
 
 <form action="FormKonto" method="POST">
@@ -35,4 +35,4 @@
 
 
 
-<jsp:include page = "footer.jsp" />
+<jsp:include page = "shared/footer.jsp" />

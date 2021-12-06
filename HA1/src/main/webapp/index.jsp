@@ -3,14 +3,14 @@
 
 
 <%-- Kein Bootstrap in erste page, startseite button unnötig in starseite --%>
- <jsp:include page = "header.jsp" />
+ <jsp:include page = "shared/header.jsp" />
 
 <h1 style="font-size:28px">BAL Bank. Willkommen zurück.</h1>
-<jsp:include page = "welcome.jsp" />
+<jsp:include page = "shared/welcome.jsp" />
 
 
 
-<jsp:include page = "footer.jsp" />
+<jsp:include page = "shared/footer.jsp" />
 
 
 

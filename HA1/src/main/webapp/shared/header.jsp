@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%-- Header.jsp wird auf allen Seiten für das Layout verlinkt, um mehrfache Zugriffe aus die CSS Dateien zu vermeiden. --%>
 <!DOCTYPE html>
 <html>
 <head>
