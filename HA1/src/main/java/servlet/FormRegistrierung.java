@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kunde.Kunde;
+import validierung.Validierung;
 
 @WebServlet("/FormRegistrierung")
 public class FormRegistrierung extends HttpServlet {
@@ -30,27 +31,42 @@ public class FormRegistrierung extends HttpServlet {
 		boolean geschaeftsbedingungen = (request.getParameter("geschaeftsbedingungen") != null);
 		boolean newsletter = (request.getParameter("newsletter") != null);
 
-		if (!(password.equals(password2))) {
-			request.setAttribute("passwordsAreNotEqual", "Password sind nicht gleicht");
-		}
-		if (!geschaeftsbedingungen) {
-			request.setAttribute("bedingungenNotAccepted", "Müssen Sie geschaeftsbedingungen akzeptieren");
-		}
-
+		request.setAttribute("vorname", vorname);
+		request.setAttribute("nachname", nachname);
+		request.setAttribute("alter", alter);
+		request.setAttribute("email", email);
+		request.setAttribute("password", password);
+		request.setAttribute("password2", password2);
+		request.setAttribute("bankinstitut", bankinstitut);
+		request.setAttribute("geschaeftsbedingungen", "checked");
+		request.setAttribute("newsletter", newsletter);
 		HttpSession session = request.getSession();
+		Validierung validierung = new Validierung();
+
 		ArrayList<Kunde> sessionKunden = (ArrayList<Kunde>) session.getAttribute("kunden");
-		boolean isEmailAlreadyUsed = false;
-		if (sessionKunden != null) {
-			for (Kunde k : sessionKunden) {
-				String mail = k.getEmail();
-				if (mail.equals(email)) {
-					request.setAttribute("emailAlreadyUsed", "Es gibt einen Account mit diesem Email.");
-					isEmailAlreadyUsed = true;
-				}
-			}
+
+		boolean isEmailAlreadyUsed = validierung.emailCheck(sessionKunden, email);
+		boolean passwordCheck = validierung.passwordCheck(password, password2);
+		boolean geschaeftsbedingungenCheck = validierung.geschaeftsbedingungenCheck(geschaeftsbedingungen);
+
+		if (!passwordCheck) {
+			request.setAttribute("passwordsAreNotEqual", "Die Passwörter sind nicht gleich!");
+			request.setAttribute("password", "");
+			request.setAttribute("password2", "");
+
 		}
 
-		if ((password.equals(password2)) && (geschaeftsbedingungen) && (!isEmailAlreadyUsed)) {
+		if (!geschaeftsbedingungenCheck) {
+			request.setAttribute("bedingungenNotAccepted", "Bitte akezeptieren Sie die Geschäftsbedingungen");
+			request.setAttribute("geschaeftsbedingungen", "");
+		}
+
+		if (validierung.emailCheck(sessionKunden, email)) {
+			request.setAttribute("emailAlreadyUsed", "Es gibt bereits einen Account mit dieser Email!");
+			request.setAttribute("email", email);
+		}
+
+		if ((password.equals(password2)) && (geschaeftsbedingungenCheck) && (!isEmailAlreadyUsed)) {
 			request.setAttribute("passwordsAreNotEqual", "");
 			request.setAttribute("bedingungenNotAccepted", "");
 			request.setAttribute("emailAlreadyUsed", "");
