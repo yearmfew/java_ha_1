@@ -1,9 +1,9 @@
 package kunde;
 
 import java.util.ArrayList;
-
+//Klasse Kunde um ein neues Kundenobjekt zu erstellen, einbindung unter anderem in Registrierung.jsp.
 public class Kunde {
-
+	private int id;
 	private String vorname;
 	private String nachname;
 	private int alter;
@@ -27,6 +27,16 @@ public class Kunde {
 	}
 
 	public Kunde() {
+	}
+
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getVorname() {
@@ -93,4 +103,11 @@ public class Kunde {
 		this.newsletterAbonniert = newsletterAbonniert;
 	}
 
+	public ArrayList<Konto> getKonten() {
+		return Konten;
+	}
+
+	public void setKonten(ArrayList<Konto> konten) {
+		Konten = konten;
+	}
 }

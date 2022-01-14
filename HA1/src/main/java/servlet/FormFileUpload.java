@@ -21,11 +21,11 @@ public class FormFileUpload extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		final String path = "/uplaods";
+		String currentDir = System.getProperty("user.dir");
+		final String path = currentDir + "/uploads";
 		final Part filePart = request.getPart("file");
-		final String fileName = filePart.getName();
-
+		final String fileName = filePart.getName() + ".xlsx";
+		String name = request.getParameter("file");
 		OutputStream out = null;
 		InputStream filecontent = null;
 
@@ -39,6 +39,7 @@ public class FormFileUpload extends HttpServlet {
 			out.write(bytes, 0, read);
 		}
 
+		request.getRequestDispatcher("konto.jsp").forward(request, response);
 	}
 
 }

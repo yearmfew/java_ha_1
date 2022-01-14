@@ -12,43 +12,25 @@ import javax.servlet.http.HttpSession;
 
 import kunde.Konto;
 import kunde.Kunde;
-
+// Servlet welches beliebig viele Kontoobjekte eines angemeldeten Kunden erstellt
 @WebServlet("/FormKonto")
 public class FormKonto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		// Parameter werden aus der Session geladen 
 		String kontoName = request.getParameter("kontoName");
-		Kunde myKunde = new Kunde();
 		HttpSession session = request.getSession();
-		// We need a kunde to create a konto. We are going to take the eingeloggte kunde
-		// directly.
-		// For now I am finding it by using email.
-		// this for loop going to be deleted
-		// email will be deleted from form and here
-		String email = request.getParameter("email");
-		String logout = request.getParameter("Logout");
-		ArrayList<Kunde> sessionKunden = (ArrayList<Kunde>) session.getAttribute("kunden");
-		for (Kunde k : sessionKunden) {
-			String mail = k.getEmail();
-			if (mail.equals(email)) {
-				myKunde = k;
-			}
-			 
-		}
-		
-		Konto konto = new Konto(kontoName, myKunde);
-		System.out.println(konto.getId());
-		System.out.println(myKunde.getVorname());
+		Kunde kunde = (Kunde) session.getAttribute("kunde");
+		Konto konto = new Konto(kontoName, kunde);
+		ArrayList<Konto> Konten = new ArrayList<Konto>();
+		// Neues Konto kann durch Benutzer erstellt werden
+		Konten.add(konto);
+		kunde.setKonten(Konten);
+		// nutzername wird zur konto.jsp gesendet um den Kunden zu begrüßen 
+		request.setAttribute("nutzername", "Hey " + kunde.getVorname() + " " + kunde.getNachname());
 		request.getRequestDispatcher("konto.jsp").forward(request, response);
-		if (logout != null) {
-			request.setAttribute("verabschiedung", "Bis Wieder "); // + k.getVorname() + " "+ k.getNachname());
-			request.getRequestDispatcher("logout.jsp").forward(request, response);
-			session.invalidate();
-		}
 	}
-	
 
 }

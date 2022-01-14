@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%-- Header.jsp wird auf allen Seiten für das Layout verlinkt, um mehrfache Zugriffe aus die CSS Dateien zu vermeiden. --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,15 +12,17 @@
       rel="stylesheet">
 
 </head>
-<body>
+<body></body>
 
-<nav class="menu"> 
-    <div>
-        <a aria-current="page" href="index.jsp">Startseite</a>
-      <%--  <a aria-current="page" href="konto.jsp">Konto</a>
-        <a href="registrierung.jsp">Registrierung</a> --%>
-    </div>
-</nav>
+<div class="menu">
+	<div>
+		<a href="konto.jsp" >Konto</a>
+		
+	</div>
+	<form method="Post" action="FormLogout">
+    <button type="submit"  id="logout">Logout</button> 
+</form>
+</div>
 
 
 <div class="page-container" >
