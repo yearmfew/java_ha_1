@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import database.DatabaseKunde;
+import database.DatabasePassword;
 import kunde.Kunde;
 import validierung.Validierung;
 
@@ -49,6 +51,11 @@ public class FormRegistrierung extends HttpServlet {
 		boolean passwordCheck = validierung.passwordCheck(password, password2);
 		boolean geschaeftsbedingungenCheck = validierung.geschaeftsbedingungenCheck(geschaeftsbedingungen);
 
+		System.out.println("regex:: " + validierung.mailCheck(email));
+		System.out.println("regex Vorname:: " + validierung.nameCheck(vorname));
+		System.out.println("regex Nachname:: " + validierung.nameCheck(nachname));
+
+		
 		if (!passwordCheck) {
 			request.setAttribute("passwordsAreNotEqual", "Die Passwörter sind nicht gleich!");
 			request.setAttribute("password", "");
@@ -75,6 +82,14 @@ public class FormRegistrierung extends HttpServlet {
 					newsletter);
 			kunden.add(newKunde);
 			session.setAttribute("kunden", kunden);
+			
+			// DATABASE CONNECTION: 
+			
+			DatabaseKunde.addUser(newKunde);
+			DatabasePassword.addPassword(newKunde);
+			
+			
+			
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("registrierung.jsp").forward(request, response);

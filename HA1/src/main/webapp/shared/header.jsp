@@ -12,6 +12,17 @@
       rel="stylesheet">
 
 </head>
-<body>
+<body></body>
+
+<div class="menu">
+	<div>
+		<a href="konto.jsp" >Konto</a>
+		
+	</div>
+	<form method="Post" action="FormLogout">
+    <button type="submit"  id="logout">Logout</button> 
+</form>
+</div>
+
 
 <div class="page-container" >
