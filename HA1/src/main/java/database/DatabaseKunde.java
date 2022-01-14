@@ -14,9 +14,9 @@ public class DatabaseKunde {
 
 		try {
 			con = DatabaseConnection.getConnection();
-
-			PreparedStatement pstmt = con.prepareStatement("INSERT INTO kunde VALUES (" + "?, " + // Kunden id -
-																									// Integer
+				
+			
+			PreparedStatement pstmt = con.prepareStatement("INSERT INTO kunde (email, vorname, nachname, alter, bank, agb, newsletter)  VALUES (" + 
 					"?, " + // email - String
 					"?, " + // vorname - String
 					"?, " + // alter - Integer
@@ -27,15 +27,17 @@ public class DatabaseKunde {
 					")");
 			// Eindeutig id problem ? mit pgadmin soll sein
 
-			pstmt.setInt(1, 17);
-			pstmt.setString(2, kunde.getEmail());
-			pstmt.setString(3, kunde.getVorname());
+//			pstmt.setInt(1, 17333);
+			pstmt.setString(1, kunde.getEmail());
+			pstmt.setString(2, kunde.getVorname());
+			pstmt.setString(3, kunde.getNachname());
 			pstmt.setInt(4, kunde.getAlter());
 			pstmt.setString(5, kunde.getBankinstitut());
 			pstmt.setBoolean(6, kunde.isGeschaeftsbedingungenAkzeptiert());
 			pstmt.setBoolean(7, kunde.isNewsletterAbonniert());
-			pstmt.setString(8, kunde.getNachname());
+			
 			int zeilen = pstmt.executeUpdate();
+			System.out.println("zeilen:: " + zeilen);
 			if (zeilen > 0) {
 				erfolg = true;
 			}

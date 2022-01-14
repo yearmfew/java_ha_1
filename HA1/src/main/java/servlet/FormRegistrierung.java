@@ -86,7 +86,7 @@ public class FormRegistrierung extends HttpServlet {
 			// DATABASE CONNECTION: 
 			
 			DatabaseKunde.addUser(newKunde);
-			DatabasePassword.addPassword(newKunde);
+			// DatabasePassword.addPassword(newKunde);
 			
 			
 			
