@@ -13,7 +13,7 @@ public class Validierung {
 	/**
 	 * Es kontrolliert ob der Name in der gewünchte Format ist.
 	 * @param name, vor- oder nachname
-	 * @return true oder false. wenn name gultig ist True usw.
+	 * @return true oder false. wenn name gultig ist True usw. 
 	 */
 	public boolean nameCheck(String name) {
 		return Pattern.matches("[A-Z]+([a-z]|[\\- ])*", name);
