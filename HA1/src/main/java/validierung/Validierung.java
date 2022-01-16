@@ -3,6 +3,7 @@ package validierung;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+import database.DatabaseKunde;
 import kunde.Kunde;
 // Klasse Validierung, welche ausgefüllte Felder des Formulars überprüft
 public class Validierung {
@@ -20,22 +21,6 @@ public class Validierung {
 	}
 	
 	
-	// Bei doppelter Eingabe überprüfung. Falls Email schon benutzt boolean = true
-	// Weil Emain uniqie in der datenbank ist, brauchen wir diese funktion nicht
-	public boolean emailCheck(ArrayList<Kunde> Kunden, String email) {
-		boolean isEmailAlreadyUsed = false;
-		
-		if (Kunden != null) {
-			for (Kunde k : Kunden) {
-				String mail = k.getEmail();
-				if (mail.equals(email)) {
-					isEmailAlreadyUsed = true;
-				}
-			}
-		}
-		
-		return isEmailAlreadyUsed;
-	}
 	/**
 	 * Es kontrolliert ob email in der gewünschten format ist.
 	 * gewünshte Format: 

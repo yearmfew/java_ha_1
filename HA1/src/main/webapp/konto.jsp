@@ -10,7 +10,7 @@
   <div class="form-inputs"> 
     <div>
     	<span>
-    	${ nutzername }
+    	Hallo ${ vorname } ${ nachname }
     	</span>
     	<br/>
       <label for="kontoName" class="form-label">Konto Name</label>

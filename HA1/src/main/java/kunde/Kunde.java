@@ -25,7 +25,18 @@ public class Kunde {
 		this.geschaeftsbedingungenAkzeptiert = geschaeftsbedingungenAkzeptiert;
 		this.newsletterAbonniert = newsletterAbonniert;
 	}
-
+	// nach login nutzen wir diese konstruktor. Wir können konto auch addieren. 
+	public Kunde(int kundenId, String vorname, String nachname, int alter, String email, String bankinstitut,
+			boolean geschaeftsbedingungenAkzeptiert, boolean newsletterAbonniert) {
+		this.vorname = vorname;
+		this.nachname = nachname;
+		this.alter = alter;
+		this.id = kundenId;
+		this.email = email;
+		this.bankinstitut = bankinstitut;
+		this.geschaeftsbedingungenAkzeptiert = geschaeftsbedingungenAkzeptiert;
+		this.newsletterAbonniert = newsletterAbonniert;
+	}
 	public Kunde() {
 	}
 
