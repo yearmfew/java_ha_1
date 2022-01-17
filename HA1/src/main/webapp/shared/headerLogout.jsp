@@ -17,14 +17,10 @@
 
 <div class="menu">
 	<div>
-		<a href="konto.jsp">Konto</a>
+		<a href="login.jsp">Login</a> 
+		<a href="registrierung.jsp">Registrierung</a>
+		<span> Wilkommen zu Bank BA </span>
 	</div>
-	<span>Hello <strong>  ${ sessionScope.kunde.getVorname() } ${ sessionScope.kunde.getNachname() } </strong>
-		Wilkommen zu Bank BA</span>
-
-	<form method="Post" action="FormLogout" class="menu-loggedin">
-		<button type="submit" id="logout">Logout</button>
-	</form>
 </div>
 
 
