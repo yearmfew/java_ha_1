@@ -16,10 +16,6 @@
 		type="submit" value="Erstellen">
 </form>
 
-<!-- ENDE beispiellösung -->
-
-
-
 
 <h1 style="font-size: 13px">Für welches Konto soll die Datei
 	hochgeladen werden?</h1>
@@ -28,9 +24,6 @@
 	KontoUpload <input type="text" name="KontoUpload"> <br /> <input
 		type="submit" value="Upload">
 </form>
-
-
-
 
 
 <h1 style="font-size: 13px">Für welches Konto sollen ihnen
@@ -46,17 +39,10 @@
 		<c:forEach var="konto" items="${ sessionScope.konten }">
 			<li><a class="dropdown-item" href="">${konto.getName()}</a></li>
 
-
 		</c:forEach>
-
 
 	</ul>
 </div>
-
-
-
-
-
 
 <form method="POST" action="FormKonto" class="formFile"
 	enctype="multipart/form-data">
@@ -76,22 +62,18 @@
 	<br />
 	<div class="table-responsive-sm">
 		<div class="card">
-			<div class="card-body">Auftragskonto: ${ eintraege[0].getAuftragskonto() }</div>
+			<div class="card-body">Kontoname: ${ kontoname}</div>
 		</div>
 
 		<table class="table table-bordered table-hover table-sm table-striped">
 			<tr>
-				<th scope="col">Buchungstext</th>
+				
 				<th scope="col">Verwendungszweck</th>
-				<th scope="col">Beguenstigter</th>
 				<th scope="col">Betrag</th>
 			</tr>
 			<c:forEach var="eintraege" items="${ sessionScope.eintraege }">
 				<tr>
-
-					<td scope="row">${ eintraege.getBuchungstext() }</td>
 					<td>${ eintraege.getVerwendungszweck() }</td>
-					<td>${ eintraege.getBeguenstigter() }</td>
 					<td>${ eintraege.getBetrag() }€</td>
 				</tr>
 			</c:forEach>
@@ -102,5 +84,10 @@
 
 
 <!--  Ende Beispiellösung -->
+
+<form method="GET" action="FormKategorie">
+	<button type="button" class="btn btn-success">Kategorien anlegen</button>
+</form>
+
 
 <jsp:include page="shared/footer.jsp" />

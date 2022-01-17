@@ -179,6 +179,71 @@ public class DatabaseKonto {
 	        }
 	        return konten;
     }
-	
+	public static double getKontostand(int id) {
+	       double kontostand = 0;
+	        try {
+	            con = DatabaseConnection.getConnection();
+	          //   String passwordDB = null;
+
+	            PreparedStatement pstmt = con.prepareStatement("SELECT SUM(betrag) AS kontostand FROM posten WHERE kontoid = ?");
+	            pstmt.setInt(1, id);
+	            ResultSet rs = pstmt.executeQuery();
+
+	            while (rs.next()) {
+	                kontostand = rs.getDouble("kontostand");
+	            }
+	            System.out.println("unsere betrag.. "+ kontostand);
+
+
+	        } catch (SQLException e) {
+	            System.err.println(e);
+	            System.err.println("SQL Fehler bei getKontostand" + e.toString());
+	        } finally {
+	            try {
+	                con.close();
+	            } catch (SQLException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	                System.out.println("[SQL] Fehler bei getKontostand - Verbindung geschlossen");
+	            }
+	        }
+	        return kontostand;
+	    }
+// METHODE UNBENUTZT
+	public static Eintrag getPosten(int id) {
+        Eintrag posten = null;
+
+	        try {
+	            con = DatabaseConnection.getConnection();
+
+	            PreparedStatement pstmt = con.prepareStatement("SELECT betrag, verwendungszweck"
+	            		+ "FROM posten WHERE kontoid= ?");
+	            pstmt.setInt(1, id);
+	            ResultSet rs = pstmt.executeQuery();
+	            
+	            if (rs == null) {
+		            System.out.println("kein posten.. ");
+	            }else {
+	            	while (rs.next()) {
+		                posten = new Eintrag(rs.getString("verwendungszweck"),rs.getDouble("betrag"));
+	         
+		            }
+		           
+	            }
+	            
+	        } catch (SQLException e) {
+	            System.err.println(e);
+	            System.err.println("SQL Fehler bei getPosten" + e.toString());
+	        } finally {
+	            try {
+	                con.close();
+	            } catch (SQLException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	                System.out.println("[SQL] Fehler bei getPosten - Verbindung geschlossen");
+	            }
+	        }
+	        return posten;
+	}
 }
 
