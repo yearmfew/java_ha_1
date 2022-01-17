@@ -11,7 +11,11 @@ import java.util.UUID;
 
 public class DatabasePassword {
 	private static Connection con = null;
-
+	/**
+	 * Speichert das Passwort des Users in die Datenbank.
+	 * @param kunde Kundenobjekt, welche alle Kundendaten aus dem Formular enthält.
+	 * @return erfolg
+	 */
 	public static boolean addPassword(Kunde kunde) {
 		boolean erfolg = false;
 		while (!erfolg) {
@@ -44,7 +48,11 @@ public class DatabasePassword {
 		}
 		return erfolg;
 	}
-
+	/**
+	 * Prüft ob die eingegebenen Passwörter übereinstimmen.
+	 * @param kundenid des Users, Passwort des Users
+	 * @return erfolg
+	 */
 	public static boolean checkPassword(int kundenId, String password) {
 		boolean loginSuccessfull = false;
 		try {

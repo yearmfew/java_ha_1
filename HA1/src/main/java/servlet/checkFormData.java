@@ -19,7 +19,7 @@ public class checkFormData {
 	 * @param password
 	 * @param password2
 	 * @param geschaeftsbedingungen
-	 * @return 
+	 * @return result
 	 * 
 	 */
 	public Map checkForm(String vorname, String nachname, 

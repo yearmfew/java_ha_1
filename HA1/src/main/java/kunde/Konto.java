@@ -34,6 +34,12 @@ public class Konto {
 		
 	}
 
+	public int getKontoId() {
+		return kontoId;
+	}
+	public void setKontoId(int kontoId) {
+		this.kontoId = kontoId;
+	}
 	public double getKontoStand() {
 		return kontoStand;
 	}

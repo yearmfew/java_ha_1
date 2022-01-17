@@ -15,7 +15,11 @@ import kunde.Kunde;
  */
 public class DatabaseKunde {
 	private static Connection con = null;
-
+	/**
+	 * Fügt einen Benutzer zur Datenbank hinzu.
+	 * @param kunde Kundenobjekt, welche alle Kundendaten aus dem Formular enthält.
+	 * @return erfolg
+	 */
 	public static boolean addUser(Kunde kunde) {
 		boolean erfolg = false;
 
@@ -79,7 +83,11 @@ public class DatabaseKunde {
 
 		return erfolg;
 	}
-
+	/**
+	 * Prüft ob Kundenemail bereits in der Datenbank existiert.
+	 * @param email
+	 * @return erfolg
+	 */
 	public static boolean isEmailExist(String email) {
 		boolean isExist = false;
 		try {
@@ -110,7 +118,11 @@ public class DatabaseKunde {
 		}
 		return isExist;
 	}
-
+	/**
+	 * Die KundenId wird aus der Datenbank zur Session gesendet.
+	 * @param email
+	 * @return erfolg
+	 */
 	public static int getId(String email) {
 		int kundenId = 0;
 		
@@ -142,7 +154,11 @@ public class DatabaseKunde {
 		return kundenId;
 	}
 
-	
+	/**
+	 * Die Kundendaten werden aus Datenbank geholt.
+	 * @param email vom angemeldeten User
+	 * @return erfolg
+	 */
 	public static Kunde getKundenData(String email ) {
 		Kunde kunde = new Kunde();
 		
@@ -170,10 +186,7 @@ public class DatabaseKunde {
 				kunde.setNachname(kundenNachname);
 				kunde.setNewsletterAbonniert(kundenNewsletter);
 				kunde.setVorname(kundenVorname);
-	
 				
-				//				Kunde kunde = new Kunde(kundenId, kundenVorname, kundenNachname, kundenAlter, email, kundenBank, kundenAgb, kundenNewsletter);
-					
 
 			}
 

@@ -69,7 +69,9 @@ Registrierung Page Style
 	flex-direction: column;
 }
 
-
+.hide{
+	display:none;
+}
 
 
 

@@ -13,13 +13,13 @@
 	rel="stylesheet">
 
 </head>
-<body></body>
+<body>
 
 <div class="menu">
 	<div>
 		<a href="login.jsp">Login</a> 
 		<a href="registrierung.jsp">Registrierung</a>
-		<span> Wilkommen zu Bank BA </span>
+		<span> Wilkommen zur Bank BA </span>
 	</div>
 </div>
 

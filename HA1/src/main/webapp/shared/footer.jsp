@@ -4,7 +4,7 @@
 <%-- </div> --%>
 
 <footer>
-    @2021 WiSe Semester - Birol | Anas 
+    @2022 WiSe Semester - Birol | Anas 
 </footer>
 
 

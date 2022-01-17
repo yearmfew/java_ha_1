@@ -41,7 +41,6 @@ public class FormLogin extends HttpServlet {
 		}
 
 		if (isLoginSuccessfull) {
-			session.setAttribute("validLogin", true);
 			Kunde kunde = DatabaseKunde.getKundenData(email);
 			ArrayList<Konto> konten = DatabaseKonto.getKontoData(email);
 			session.setAttribute("kunde", kunde);

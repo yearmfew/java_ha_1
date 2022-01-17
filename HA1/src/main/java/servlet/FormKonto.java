@@ -29,6 +29,7 @@ public class FormKonto extends HttpServlet {
 	String kontoname;
 	double kontostand = 0;
 	Konto konto = null;
+
 	/**
 	 * Realisiert die Anforderung, ein neues Konto zu erstellen.
 	 */
@@ -39,30 +40,18 @@ public class FormKonto extends HttpServlet {
 		kontoname = request.getParameter("konto"); // konto verändert zu kontoName
 		HttpSession session = request.getSession();
 		Kunde kunde = (Kunde) session.getAttribute("kunde");
-		// ArrayList<Konto> kontoliste = null;
 		konto = new Konto(kontoname, kunde.getEmail(), kontostand);
-		
-		
+
 		try {
-			//kontoliste = (ArrayList<Konto>) session.getAttribute("kontoliste");
-			// id = Validierung.getHoechsteID(kontoliste); kundenid aus datenbank
-			// konto = new Konto(kontoname, kunde.getEmail(), kontostand);
-			// kontoliste.add(konto);
-			
 			database.DatabaseKonto.addKonto(konto);
 			int id = database.DatabaseKonto.getKontoId(kunde.getEmail());
 
 			session.setAttribute("kontoid", id);
 
 		} catch (NullPointerException npe) {
-			// habe konto erstmal auskommentiert und aus catch block rausgenommen; database
-			// konto msus aber rein
-			// Konto konto = new Konto(kontoname, kunde.getEmail(), 0);
-			// kontoliste = new ArrayList<Konto>();
-			// kontoliste.add(konto);
+			System.out.println("doGet Fehler" + npe);
 
 		}
-		// session.setAttribute("kontoliste", kontoliste);
 		request.getRequestDispatcher("konto.jsp").forward(request, response);
 
 	}
@@ -85,7 +74,7 @@ public class FormKonto extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		Kunde kunde = (Kunde) session.getAttribute("kunde");
-		int id = (int) session.getAttribute("kontoid");
+		int id = Integer.parseInt(request.getParameter("kontoId"));
 
 		try {
 			// Bereite Liste eines spezifischen Datentyps zur Speicherung der Eintr�ge vor
@@ -103,40 +92,25 @@ public class FormKonto extends HttpServlet {
 				if (tokens.length > 0) {
 					for (int i = 0; i < tokens.length; i++) {
 						tokens[i] = tokens[i].substring(0, tokens[i].length());
-						// System.out.println("Token: " + tokens[i].toString()); //erstmal unnötig
 					}
-					
-					
 					// Token 14: Betrag. Reinige Eintrag, sodass er als double geparsed werden kann
 					tokens[14] = tokens[14].replace(",", ".");
 					// Erstelle aus allen relevanten Eintr�gen ein Bankobjekt
-					eintrag = new Eintrag(
-							tokens[4], // Verwendungszweck
+					eintrag = new Eintrag(tokens[4], // Verwendungszweck
 							Double.parseDouble(tokens[14]) // Betrag
 					);
-					
-					
-					
 					// die einträge müssen aus datenbank zum user geschickt werden
 					eintraege.add(eintrag);
-					
-					
 					// DATABASE POSTEN
 					database.DatabaseKonto.addEintrag(eintrag, id);
-					// eintraege.add(database.DatabaseKonto.getPosten(id));
-					
-						
 				}
-				
-			} // DATABASE KONTO 
-			kontostand += database.DatabaseKonto.getKontostand(id);
-			// kontostand muss nochmal zur database konto
-			database.DatabaseKonto.addKonto(konto);
-			
-			// FEHLER: kontoupload überschreibt kontoname
-			
-			session.setAttribute("kontoname", kontoname);	
-			
+			} 
+			// DATABASE KONTO
+			kontostand = database.DatabaseKonto.getKontostand(id);
+			String kontoName = database.DatabaseKonto.getName(id);
+
+			session.setAttribute("kontoname", kontoName);
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -153,7 +127,6 @@ public class FormKonto extends HttpServlet {
 		session.setAttribute("eintraege", eintraege);
 		session.setAttribute("kontostand", kontostand);
 		request.getRequestDispatcher("konto.jsp").forward(request, response);
-		
-		
+
 	}
 }
