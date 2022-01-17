@@ -8,10 +8,16 @@
     <div>
       <label for="vorname" class="form-label">Vorname</label>
       <input type="text" required class="form-control" name="vorname" id="vorname" value= ${ vorname }>
+         <span class="warning">
+      ${ istVornameGueltig } 
+      </span>
     </div>
     <div>
       <label for="nachname" class="form-label">Nachname</label>
       <input type="text" required class="form-control" name="nachname" id="nachname" value= ${ nachname }>
+         <span class="warning">
+      ${ istNachnameGueltig } 
+      </span>
     </div>
       <div>
       <label for="alter" class="form-label">Alter</label>
@@ -22,6 +28,7 @@
       <input type="email" required class="form-control" name="email" id="email" value= ${ email }>
             <span class="warning">
       ${ emailAlreadyUsed }
+      ${ emailNichtGueltig }
       </span>
     </div>
     <div>

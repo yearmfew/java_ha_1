@@ -1,23 +1,72 @@
 package kunde;
 
-import java.util.UUID;
-// Beinhaltet getter und setter für FormKonto
+
+
 public class Konto {
-	private String kontoName;
-	private String id;
-	private Kunde Kunde;
 
-	public Konto(String kontoName, Kunde kunde) {
-		this.kontoName = kontoName;
-		Kunde = kunde;
-		// KontoID von einem Kunden wird mithilfe der email erstellt
-		String email = kunde.getEmail();
-		String[] splittedMail = email.split("@");
-		this.id = splittedMail[0] + UUID.randomUUID().toString();
+
+
+	private String name; 
+	private String kundenEmail; 
+	private double kontoStand;
+	private int kontoId;
+	
+	/** Konstruktor: Name, Mail, ID
+	 * @param name
+	 * @param kundenEmail
+	 * @param kontoID
+	 */
+	public Konto(String name, String kundenEmail, double kontoStand) {
+		super();
+		this.name = name;
+		this.kundenEmail = kundenEmail;
+		this.kontoStand = kontoStand;
+	}
+	public Konto(int kontoId, String name, String kundenEmail, double kontoStand) {
+		super();
+		this.kontoId = kontoId;
+		this.name = name;
+		this.kundenEmail = kundenEmail;
+		this.kontoStand = kontoStand;
+	}
+	
+	public Konto() {
+		
 	}
 
-	public void setKontoName(String kontoName) {
-		this.kontoName = kontoName;
+	public double getKontoStand() {
+		return kontoStand;
 	}
+
+
+	public void setKontoStand(double kontoStand) {
+		this.kontoStand = kontoStand;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public void setKundenEmail(String kundenEmail) {
+		this.kundenEmail = kundenEmail;
+	}
+	public String getName() {
+		return name;
+	}
+
+
+	public String getKundenEmail() {
+		return kundenEmail;
+	}
+
+
+	public double getKontostand() {
+		return kontoStand;
+	} 
+	
 
 }
+
+

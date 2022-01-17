@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import database.DatabaseKunde;
+import database.DatabasePassword;
 import kunde.Kunde;
-import validierung.Validierung;
 
 @WebServlet("/FormRegistrierung")
 public class FormRegistrierung extends HttpServlet {
@@ -41,43 +43,35 @@ public class FormRegistrierung extends HttpServlet {
 		request.setAttribute("geschaeftsbedingungen", "checked");
 		request.setAttribute("newsletter", newsletter);
 		HttpSession session = request.getSession();
-		Validierung validierung = new Validierung();
 
 		ArrayList<Kunde> sessionKunden = (ArrayList<Kunde>) session.getAttribute("kunden");
 
-		boolean isEmailAlreadyUsed = validierung.emailCheck(sessionKunden, email);
-		boolean passwordCheck = validierung.passwordCheck(password, password2);
-		boolean geschaeftsbedingungenCheck = validierung.geschaeftsbedingungenCheck(geschaeftsbedingungen);
+		checkFormData cF = new checkFormData();
 
-		if (!passwordCheck) {
-			request.setAttribute("passwordsAreNotEqual", "Die Passwörter sind nicht gleich!");
-			request.setAttribute("password", "");
-			request.setAttribute("password2", "");
+		Map result = cF.checkForm(vorname, nachname, alter, email, password, password2, geschaeftsbedingungen);
 
-		}
+		System.out.println("size" + result.size());
 
-		if (!geschaeftsbedingungenCheck) {
-			request.setAttribute("bedingungenNotAccepted", "Bitte akezeptieren Sie die Geschäftsbedingungen");
-			request.setAttribute("geschaeftsbedingungen", "");
-		}
-
-		if (validierung.emailCheck(sessionKunden, email)) {
-			request.setAttribute("emailAlreadyUsed", "Es gibt bereits einen Account mit dieser Email!");
-			request.setAttribute("email", email);
-		}
-
-		if ((password.equals(password2)) && (geschaeftsbedingungenCheck) && (!isEmailAlreadyUsed)) {
-			request.setAttribute("passwordsAreNotEqual", "");
-			request.setAttribute("bedingungenNotAccepted", "");
-			request.setAttribute("emailAlreadyUsed", "");
-
+		if (result.size() == 0) {
 			Kunde newKunde = new Kunde(vorname, nachname, alter, email, password, bankinstitut, geschaeftsbedingungen,
 					newsletter);
 			kunden.add(newKunde);
 			session.setAttribute("kunden", kunden);
+
+			// DATABASE CONNECTION
+
+			DatabaseKunde.addUser(newKunde);
+			DatabasePassword.addPassword(newKunde);
+
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} else {
+			// fehler erklarungen erstellung mit for loop
+			for (Object i : result.keySet()) {
+				request.setAttribute((String) i, (String) result.get(i));
+			}
+
 			request.getRequestDispatcher("registrierung.jsp").forward(request, response);
+
 		}
 
 	}

@@ -3,7 +3,7 @@ package kunde;
 import java.util.ArrayList;
 //Klasse Kunde um ein neues Kundenobjekt zu erstellen, einbindung unter anderem in Registrierung.jsp.
 public class Kunde {
-
+	private int id;
 	private String vorname;
 	private String nachname;
 	private int alter;
@@ -25,24 +25,93 @@ public class Kunde {
 		this.geschaeftsbedingungenAkzeptiert = geschaeftsbedingungenAkzeptiert;
 		this.newsletterAbonniert = newsletterAbonniert;
 	}
-
+	// nach login nutzen wir diese konstruktor. Wir können konto auch addieren. 
+	public Kunde(int kundenId, String vorname, String nachname, int alter, String email, String bankinstitut,
+			boolean geschaeftsbedingungenAkzeptiert, boolean newsletterAbonniert) {
+		this.vorname = vorname;
+		this.nachname = nachname;
+		this.alter = alter;
+		this.id = kundenId;
+		this.email = email;
+		this.bankinstitut = bankinstitut;
+		this.geschaeftsbedingungenAkzeptiert = geschaeftsbedingungenAkzeptiert;
+		this.newsletterAbonniert = newsletterAbonniert;
+	}
 	public Kunde() {
+	}
+
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getVorname() {
 		return vorname;
 	}
 
+	public void setVorname(String vorname) {
+		this.vorname = vorname;
+	}
+
 	public String getNachname() {
 		return nachname;
 	}
-	
+
+	public void setNachname(String nachname) {
+		this.nachname = nachname;
+	}
+
+	public int getAlter() {
+		return alter;
+	}
+
+	public void setAlter(int alter) {
+		this.alter = alter;
+	}
+
 	public String getEmail() {
 		return email;
 	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getPassword() {
 		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getBankinstitut() {
+		return bankinstitut;
+	}
+
+	public void setBankinstitut(String bankinstitut) {
+		this.bankinstitut = bankinstitut;
+	}
+
+	public boolean isGeschaeftsbedingungenAkzeptiert() {
+		return geschaeftsbedingungenAkzeptiert;
+	}
+
+	public void setGeschaeftsbedingungenAkzeptiert(boolean geschaeftsbedingungenAkzeptiert) {
+		this.geschaeftsbedingungenAkzeptiert = geschaeftsbedingungenAkzeptiert;
+	}
+
+	public boolean isNewsletterAbonniert() {
+		return newsletterAbonniert;
+	}
+
+	public void setNewsletterAbonniert(boolean newsletterAbonniert) {
+		this.newsletterAbonniert = newsletterAbonniert;
 	}
 
 	public ArrayList<Konto> getKonten() {
