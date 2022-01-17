@@ -19,7 +19,9 @@ import kunde.Kunde;
 public class FormRegistrierung extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ArrayList<Kunde> kunden = new ArrayList<Kunde>();
-
+	/**
+	 * Post methode für registrierung form. 
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -44,26 +46,22 @@ public class FormRegistrierung extends HttpServlet {
 		request.setAttribute("newsletter", newsletter);
 		HttpSession session = request.getSession();
 
-		ArrayList<Kunde> sessionKunden = (ArrayList<Kunde>) session.getAttribute("kunden");
-
 		checkFormData cF = new checkFormData();
 
 		Map result = cF.checkForm(vorname, nachname, alter, email, password, password2, geschaeftsbedingungen);
-
-		System.out.println("size" + result.size());
 
 		if (result.size() == 0) {
 			Kunde newKunde = new Kunde(vorname, nachname, alter, email, password, bankinstitut, geschaeftsbedingungen,
 					newsletter);
 			kunden.add(newKunde);
 			session.setAttribute("kunden", kunden);
-
+			session.setAttribute("kunde", newKunde);
+			
 			// DATABASE CONNECTION
-
 			DatabaseKunde.addUser(newKunde);
 			DatabasePassword.addPassword(newKunde);
 
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("konto.jsp").forward(request, response);
 		} else {
 			// fehler erklarungen erstellung mit for loop
 			for (Object i : result.keySet()) {

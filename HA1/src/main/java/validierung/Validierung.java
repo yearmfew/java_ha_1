@@ -33,10 +33,16 @@ public class Validierung {
 	 */
 	public boolean mailCheck(String email) {
 		System.out.println(email);
-		return Pattern.matches("^([a-z]|[\\+|\\-|\\.]){1,63}[@](([a-z]|[\\+|\\-|\\.]){1,191})$", email);
+		return Pattern.matches("^([a-z]|[\\+|\\-|\\.]){1,63}[@](([a-z]|[\\+|\\-|\\.]){1,190})$", email);
 				
 	}
-	// Überprüfung ob beide Passwörter richtig sind.Boolean Rückgabe true bei Übereinstimmung.
+	
+	/**
+	 * Überprüfung ob beide Passwörter gleich sind.
+	 * @param password
+	 * @param password2
+	 * @return isSame, wenn Passwörter gleich sind ist es true usw.
+	 */
 	public boolean passwordCheck(String password, String password2) {
 		boolean isSame = false;
 		if ((password.equals(password2))) {
@@ -44,8 +50,13 @@ public class Validierung {
 		}
 		return isSame;
 	}
-	// Falls Geschäftsbedingungen unchecked bleiben wird boolean icChecked false übermittelt,
+	// 
+	/**
+	 * Überprüfung ob agb checked ist. Falls Geschäftsbedingungen unchecked bleiben wird boolean icChecked false übermittelt,
 	// sodass der Users die Daten nicht submitten kann.
+	 * @param geschaeftsbedingungen
+	 * @return isChecked, wenn agb checked ist, ist es true usw.
+	 */
 	public boolean geschaeftsbedingungenCheck(boolean geschaeftsbedingungen) {
 		boolean isChecked = false;
 		if (geschaeftsbedingungen) {

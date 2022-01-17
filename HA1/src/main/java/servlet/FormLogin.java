@@ -32,64 +32,26 @@ public class FormLogin extends HttpServlet {
 
 		// get kunde id
 		int kundenId = DatabaseKunde.getId(email);
-		if (kundenId == 0) {
+		if (kundenId != 0) {
+			isLoginSuccessfull = DatabasePassword.checkPassword(kundenId, password);
+		} else {
 			// es gibt keinen kunde mit diesem email
 			// redirect to login page with error code
-		} else {
-			// check
-			isLoginSuccessfull = DatabasePassword.checkPassword(kundenId, password);
+			request.setAttribute("keineEmailFounded", "Es gibt keinen Akkount mit diesem Email.");
 		}
 
 		if (isLoginSuccessfull) {
 			session.setAttribute("validLogin", true);
-			// get kunden data und erstelle kunden objekt
 			Kunde kunde = DatabaseKunde.getKundenData(email);
-			ArrayList <Konto> konten =  DatabaseKonto.getKontoData(email);
+			ArrayList<Konto> konten = DatabaseKonto.getKontoData(email);
 			session.setAttribute("kunde", kunde);
 			session.setAttribute("konten", konten);
-			request.setAttribute("vorname", kunde.getVorname());
-			request.setAttribute("nachname", kunde.getNachname());
 			request.getRequestDispatcher("konto.jsp").forward(request, response);
-
-			// redirect to main page
 		} else {
-			// redirect to login page with error code
 			request.setAttribute("fehlermeldung", "Nutzername oder Passwort falsch. Bitte überprüfen sie ihre Daten.");
-			// login muss erneut geschehen auf der login seite
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 
 	}
-
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		// Paramter werden übermittelt um mit denen zu arbeiten
-//		String email = request.getParameter("email");
-//		String password = request.getParameter("password");
-//		HttpSession session = request.getSession();
-//		// prüfe ob es kunden in der liste gibt und sende die kundendetails
-//		ArrayList<Kunde> sessionKunden = (ArrayList<Kunde>) session.getAttribute("kunden");
-//		for (Kunde customer : sessionKunden) {
-//			if (customer.getEmail().equals(email)) {
-//				request.setAttribute("vorname", customer.getVorname());
-//				request.setAttribute("kunde", customer);
-//				// prüfe ob Passwörter gleich sind 
-//				if (customer.getPassword().equals(password)) {
-//					session.setAttribute("kunde", customer);
-//					request.setAttribute("nutzername", "Hey " + customer.getVorname() + " " + customer.getNachname());
-//					// weiterleitung zur Kontoseite
-//					request.getRequestDispatcher("konto.jsp").forward(request, response);
-//
-//				} else {
-//					request.setAttribute("fehlermeldung",
-//							"Nutzername oder Passwort falsch. Bitte überprüfen sie ihre Daten.");
-//					// login muss erneut geschehen auf der login seite
-//					request.getRequestDispatcher("login.jsp").forward(request, response);
-//
-//				}
-//			}
-//		}
-//
-//	}
 
 }
