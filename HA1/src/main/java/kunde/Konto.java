@@ -3,9 +3,13 @@ package kunde;
 
 
 public class Konto {
+
+
+
 	private String name; 
 	private String kundenEmail; 
 	private double kontoStand;
+	private int kontoId;
 	
 	/** Konstruktor: Name, Mail, ID
 	 * @param name
@@ -18,8 +22,36 @@ public class Konto {
 		this.kundenEmail = kundenEmail;
 		this.kontoStand = kontoStand;
 	}
+	public Konto(int kontoId, String name, String kundenEmail, double kontoStand) {
+		super();
+		this.kontoId = kontoId;
+		this.name = name;
+		this.kundenEmail = kundenEmail;
+		this.kontoStand = kontoStand;
+	}
+	
+	public Konto() {
+		
+	}
+
+	public double getKontoStand() {
+		return kontoStand;
+	}
 
 
+	public void setKontoStand(double kontoStand) {
+		this.kontoStand = kontoStand;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public void setKundenEmail(String kundenEmail) {
+		this.kundenEmail = kundenEmail;
+	}
 	public String getName() {
 		return name;
 	}
@@ -38,28 +70,3 @@ public class Konto {
 }
 
 
-
-/*
-// Beinhaltet getter und setter für FormKonto
-public class Konto {
-	private String kontoName;
-	private String id;
-	private Kunde Kunde;
-
-	public Konto(String kontoName, Kunde kunde) {
-		this.kontoName = kontoName;
-		Kunde = kunde;
-		// KontoID von einem Kunden wird mithilfe der email erstellt
-		String email = kunde.getEmail();
-		String[] splittedMail = email.split("@");
-		this.id = splittedMail[0] + UUID.randomUUID().toString();
-	}
-
-	public void setKontoName(String kontoName) {
-		this.kontoName = kontoName;
-	}
-	
-	public String getKontoName(String kontoName) {
-		return kontoName;
-	}
-	*/
