@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import database.DatabaseKonto;
 import database.DatabaseKunde;
 import database.DatabasePassword;
+import kunde.Konto;
 import kunde.Kunde;
 
 // Servlet welches die Logindaten des Besuchers auf Richtigkeit prüft
@@ -42,7 +44,9 @@ public class FormLogin extends HttpServlet {
 			session.setAttribute("validLogin", true);
 			// get kunden data und erstelle kunden objekt
 			Kunde kunde = DatabaseKunde.getKundenData(email);
+			ArrayList <Konto> konten =  DatabaseKonto.getKontoData(email);
 			session.setAttribute("kunde", kunde);
+			session.setAttribute("konten", konten);
 			request.setAttribute("vorname", kunde.getVorname());
 			request.setAttribute("nachname", kunde.getNachname());
 			request.getRequestDispatcher("konto.jsp").forward(request, response);
